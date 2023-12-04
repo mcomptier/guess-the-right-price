@@ -1,0 +1,129 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+    margin: 0;
+    padding:0;
+    text-align: center;
+    overflow: hidden;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+#game-intro {
+    align-content: center;
+    overflow: hidden;
+    position: relative;
+    background-image: url(../img/night.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1, p, .buttons-container {
+    color: white; /* Ajustez la couleur du texte pour une meilleure lisibilité sur l'image de fond */
+}
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: transparent;
+    background: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #00ff00, #0000ff, #8000ff, #ff00ff);
+    background-size: 600% 600%;
+    animation: rainbowWavy 4s linear infinite;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@keyframes rainbowWavy {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+p {
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 0.5rem;
+
+}
+
+
+.buttons-container {
+    padding : 20px ;
+}
+.startbtn, .intstructionbtn, .musicbtn  {
+
+    padding: 20px 30px;
+    background-image: radial-gradient(circle, rgb(254, 124, 42) 0%, rgb(72, 28, 2) 100%);
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: white;
+    margin: 10px;
+  }
+  .startbtn:hover, .intstructionbtn:hover, .musicbtn:hover  {
+    
+
+    padding: 20px 30px;
+    background-image: radial-gradient(circle, rgb(254, 124, 42) 0%, rgb(72, 28, 2) 100%);
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: white;
+  }
+
+
+  

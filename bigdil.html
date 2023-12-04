@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>The Big Dil</title>
+    <!-- LINK THE STYLES HERE -->
+    <link rel="stylesheet" type="text/css" href="../guess-the-right-price/styles/style.css"/>
+
+  </head>
+  <body>
+    <main>
+        <body>
+            <div id="game-intro">
+                <img src="/guess-the-right-price/img/logobigdil.png" alt="Intro Image" class="intro-image">
+                <h1>Welcome constestant to the dazzling world of Big Dil</h1>
+                <p>You've been handpicked for this ultimate TV show.</p>
+                <p>Your mission ? Guess the right price and walk away with incredible rewards</p>
+                <p>The game is simple - you have to determine the correct price of various products within a ticking timer</p>
+                <p>Win and the prize is yours</p>
+                <p>Join our make-up team and hurry up to start the game.</p>
+
+
+                <div class="buttons-container">
+                    <button class="startbtn" onclick="startGame()">Commencer le jeu</button>
+                    <button class="intstructionbtn"onclick="toggleInstructions()">Instructions</button>
+                    <button class="musicbtn" onclick="toggleSound()">Sound : Off</button>
+                </div>
+
+
+            </div>
+        
+            <div id="game-screen" class="page" style="display: none;">
+                <img id="productImage" src="" alt="Product Image">
+                <input type="number" id="priceInput" placeholder="Guess a price">
+                <button onclick="submitGuess()">Guess</button>
+                <p id="hint"></p>
+                <div id="timer">Temps restant : <span id="time">60</span> secondes</div>
+            </div>
+        
+            <div id="game-results" class="page" style="display: none;">
+                <!-- Contenu de la page de résultats ici -->
+                <h1>Résultats</h1>
+                <p>Vous avez réussi à deviner le prix de plusieurs produits. Voici vos récompenses :</p>
+                <ul id="rewardsList"></ul>
+            </div>
+    </main>
+    <script src="src/guess.js" defer></script>
+    <script src="src/instruction.js" defer></script>
+    <script src="src/index.js" defer></script>
+     </body>
+</html>
+
+    
+
+   
+    </main>
+
+
+  </body>
+</html>
+
+
