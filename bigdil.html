@@ -11,7 +11,6 @@
   </head>
   <body>
     <main>
-        <body>
             <div id="game-intro">
                 <img src="/guess-the-right-price/img/logobigdil.png" alt="Intro Image" class="intro-image">
                 <h1>Welcome constestant to the dazzling world of Big Dil</h1>
@@ -23,21 +22,43 @@
 
 
                 <div class="buttons-container">
-                    <button class="startbtn" onclick="startGame()">Commencer le jeu</button>
-                    <button class="intstructionbtn"onclick="toggleInstructions()">Instructions</button>
-                    <button class="musicbtn" onclick="toggleSound()">Sound : Off</button>
+                  <button id="startBtn" class="startbtn" onclick="startGame()">Commencer le jeu</button>
+                  <button class="instructionbtn"onclick="toggleInstructions()">Instructions</button>
+                  <button class="musicbtn" onclick="toggleSound()">Sound : Off</button>
                 </div>
 
 
             </div>
         
             <div id="game-screen" class="page" style="display: none;">
-                <img id="productImage" src="" alt="Product Image">
-                <input type="number" id="priceInput" placeholder="Guess a price">
-                <button onclick="submitGuess()">Guess</button>
-                <p id="hint"></p>
-                <div id="timer">Temps restant : <span id="time">60</span> secondes</div>
-            </div>
+              <!-- Image du présentateur à gauche -->
+              <div id="presenter-image" class="image-container">
+                  <img src="../guess-the-right-price/img/presentateur.jpeg" alt="Presenter Image">
+              </div>
+          
+              <!-- Résultat plus ou moins au centre -->
+              <div id="result-container" class="result-container">
+                  <p>${price} is <span id="result-text"></span>!</p>
+              </div>
+          
+              <!-- Div d'images à droite -->
+              <div id="images-container" class="image-container">
+                  <!-- Insérez ici vos images dynamiquement -->
+              </div>
+          
+              <!-- Timer sous l'image de gauche -->
+              <div id="timer">Temps restant : <span id="time">60</span> secondes</div>
+          
+              <!-- Input et bouton au centre de l'image -->
+              <div id="user-input-container" class="image-container">
+                  <img id="productImage" src="" alt="Product Image"> <!-- Ajout de cet élément -->
+                  <input type="number" id="priceInput" placeholder="Guess a price">
+                  <button onclick="submitGuess()">Guess</button>
+              </div>
+          </div>
+           
+
+
         
             <div id="game-results" class="page" style="display: none;">
                 <!-- Contenu de la page de résultats ici -->
@@ -46,19 +67,14 @@
                 <ul id="rewardsList"></ul>
             </div>
     </main>
-    <script src="src/guess.js" defer></script>
-    <script src="src/instruction.js" defer></script>
-    <script src="src/index.js" defer></script>
+<script src="../guess-the-right-price/js/products.js"></script>
+<script src="../guess-the-right-price/js/answers.js"></script>
+<script src="../guess-the-right-price/js/game.js"></script>
+<script src="../guess-the-right-price/js/index.js"></script>
+    
+
      </body>
 </html>
 
-    
-
-   
-    </main>
-
-
-  </body>
-</html>
-
+  
 

@@ -28,12 +28,20 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+html, body {
+    height: 100%;
+}
 body {
-	line-height: 1;
+    line-height: 1;
     margin: 0;
-    padding:0;
+    padding: 0;
     text-align: center;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 ol, ul {
 	list-style: none;
@@ -96,11 +104,19 @@ p {
 
 }
 
+.page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;  /* Ajustez la couleur du texte pour une meilleure lisibilité sur l'image de fond */
+}
 
 .buttons-container {
     padding : 20px ;
 }
-.startbtn, .intstructionbtn, .musicbtn  {
+.startbtn, .instructionbtn, .musicbtn  {
 
     padding: 20px 30px;
     background-image: radial-gradient(circle, rgb(254, 124, 42) 0%, rgb(72, 28, 2) 100%);
@@ -112,7 +128,7 @@ p {
     color: white;
     margin: 10px;
   }
-  .startbtn:hover, .intstructionbtn:hover, .musicbtn:hover  {
+  .startbtn:hover, .instructionbtn:hover, .musicbtn:hover  {
     
 
     padding: 20px 30px;
@@ -125,5 +141,34 @@ p {
     color: white;
   }
 
+  #game-screen {
+    position: relative;
+    background-image: url('../img/night.png');
+    background-size: repeat;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-  
+#game-screen .image-container {
+    max-width: 50%;
+    margin: 10px;
+}
+#presenter-image, #productImage {
+    max-width: 100px;
+}
+#presenter-image img,  #productImage img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+.result-container {
+    text-align: center;
+}
+#presenter-image img,  #productImage img {
+    max-width: 100%;
+    height: auto;
+}
