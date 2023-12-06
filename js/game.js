@@ -3,11 +3,20 @@ class Game {
         this.startScreen = document.getElementById("game-intro");
         this.gameScreen = document.getElementById("game-screen");
         this.resultScreen = document.getElementById("game-results");
-        this.timerElement = document.getElementById("time");
+        this.timerElement = document.getElementById('timer-container');
+        this.timePassed = 0; 
+        this.timerInterval = null; // Stocker l'ID de l'intervalle du minuteur
+        this.userGuess = null;
+        this.trials = 1; 
+        this.guessedProducts = [];
+        document.getElementById('submitBtn').addEventListener('click', () => this.checkAndSubmitGuess());
+
     }
 
+
+    
     startGame() {
-        // Initialiser le jeu
+        // Début du jeu avec un produit aléaltoir
         this.currentProduct = getRandomProduct();
         this.displayProduct(this.currentProduct);
         this.startTimer();
@@ -19,42 +28,141 @@ class Game {
         this.gameScreen.style.display = 'block';
     }
 
+    replayGame() {
+        // Réinitialiser les propriétés du jeu pour une nouvelle partie
+        this.trials = 1;
+        this.guessedProducts = [];
+        this.timePassed = 0;
+
+        // Redémarrer le jeu avec un nouveau produit
+        this.currentProduct = getRandomProduct();
+        this.displayProduct(this.currentProduct);
+        this.startTimer();
+
+        // Cacher l'écran des résultats et afficher l'écran du jeu
+        this.resultScreen.style.display = 'none';
+        this.gameScreen.style.display = 'block';
+    }
+
     displayProduct(product) {
-        // Afficher l'image du produit sur l'interface
-        const productImage = document.getElementById('productImage');
-        productImage.src = `../guess-the-right-price/img/${product.img}`; // Adjust the path based on your folder structure
+    // Récupère l'élément d'image dans le document par son ID
+         const productImage = document.getElementById('productImage');
+     // Modifie la source (src) de l'image pour correspondre à celle du produit actuel
+        productImage.src = `../guess-the-right-price/img/${product.img}`;
+    // Modifie le texte alternatif (alt) de l'image 
+
         productImage.alt = product.name;
     }
 
-    submitGuess() {
-        // Logique pour soumettre la supposition et obtenir le résultat
+    checkAndSubmitGuess() {
+        // Récupérer la valeur entrée par l'utilisateur
         const priceInput = document.getElementById('priceInput');
         const userGuess = parseInt(priceInput.value);
+    
+        // Comparer la valeur à la réponse correcte
+        const correctPrice = this.currentProduct.price;
+    
+        if (userGuess < correctPrice) {
+            this.displayGuessResult(userGuess, 'more', 'red');
+        } else if (userGuess > correctPrice) {
+            this.displayGuessResult(userGuess, 'less', 'orange');
+        } else {
+            this.guessedProducts.push(this.currentProduct);
+            this.displayGuessResult(userGuess, 'correct', 'green');
+            this.updateRewardsList()
+            this.replayGame()
+        }
+        this.updateRewardsList(); 
 
-        // Reste du code pour la soumission de la supposition
+    }
+    updateRewardsList() {
+        const rewardsList = document.getElementById('rewardsList');
+
+        // Effacer la liste actuelle
+        rewardsList.innerHTML = '';
+
+        // Ajouter les produits correctement devinés à la liste
+        this.guessedProducts.forEach(product => {
+            const listItem = document.createElement('li');
+            listItem.textContent = product.name;
+            rewardsList.appendChild(listItem);
+        });
     }
 
+    displayGuessResult(userGuess, className, backgroundColor) {
+        const instructionContainer = document.getElementById('result-container');
+       
+         // Ajouter le nombre d'instruction à afficher
+        while (instructionContainer.children.length >= 6) {
+            instructionContainer.removeChild(instructionContainer.firstChild);
+        }
+        const instruction = document.createElement('p');
+        instruction.className = 'instruction';
+        instruction.classList.add(className);
+
+        instruction.innerHTML = `#${this.trials} (${userGuess})... it's  ${className}!  `;
+        instruction.style.backgroundColor = backgroundColor;      
+         this.trials++;
+
+        // Ajouter l'instruction au conteneur
+        instructionContainer.appendChild(instruction);
+    }
+
+      showResult(message) {
+        // Mettre à jour l'élément d'affichage du résultat avec le message fourni
+        const resultContainer = document.getElementById('result-container');
+        resultContainer.innerHTML = `<p>${message}</p>`;
+      }
+
     startTimer() {
-        // Logique pour démarrer le minuteur
-        this.time = 600; // Définir la durée du minuteur en secondes
+        // Utiliser clearInterval pour éviter les conflits avec les appels précédents à setInterval
+        clearInterval(this.timerInterval);
 
-        this.timer = setInterval(() => {
-            this.time--;
+        // Utiliser setInterval pour appeler la fonction update chaque seconde
+        this.timerInterval = setInterval(() => this.updateTimer(), 1000);
 
-            // Mettre à jour l'interface utilisateur avec le temps restant
-            this.timerElement.textContent = this.time;
+        this.initializeTimer();
+    }
+    initializeTimer() {
+        this.time = 60; 
+        this.timerElement.innerHTML = `
+            <div class="label"></div>
+        `;
+        this.updateTimerDisplay();
 
-            if (this.time <= 0) {
-                // Le temps est écoulé, vous pouvez mettre en œuvre la logique de fin de jeu ici
-                clearInterval(this.timer);
-                this.endGame();
-            }
-        }, 1000); // Mettre à jour toutes les secondes
+    }
+
+    updateTimerDisplay() {
+        const remainingTime = this.time - this.timePassed;
+        const label = document.querySelector('.label');
+      
+        label.textContent = remainingTime;
+
+        if (remainingTime < 10) {
+            label.style.color = 'red';
+        } else {
+            label.style.color = 'rgb(34, 213, 201)';
+           
+        }
+    }
+
+    updateTimer() {
+        if (this.timePassed < this.time) {
+            this.timePassed++;
+            this.updateTimerDisplay();
+        } else {
+            this.endGame();
+        }
     }
 
     endGame() {
         // Logique de fin de jeu, par exemple, afficher les résultats
         this.gameScreen.style.display = 'none';
         this.resultScreen.style.display = 'block';
+
+        // Arrêtez le minuteur
+        clearInterval(this.timerInterval);
     }
 }
+
+window.Game = Game;

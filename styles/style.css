@@ -101,16 +101,15 @@ p {
     font-weight: bold;
     font-family: 'Raleway', sans-serif;
     margin-bottom: 0.5rem;
+    width:20vh;
 
 }
-
-.page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;  /* Ajustez la couleur du texte pour une meilleure lisibilité sur l'image de fond */
+span{
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 0.5rem;
 }
 
 .buttons-container {
@@ -141,34 +140,131 @@ p {
     color: white;
   }
 
+/* game screen --------------------------------*/
+
+
   #game-screen {
-    position: relative;
     background-image: url('../img/night.png');
     background-size: repeat;
     background-position: center;
     height: 100vh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding :50vh;
 }
 
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+
+header button {
+    margin-left: 10px;
+
+}
+
+
+
 #game-screen .image-container {
-    max-width: 50%;
+    max-width: 100%;
     margin: 10px;
+    
 }
 #presenter-image, #productImage {
-    max-width: 100px;
-}
-#presenter-image img,  #productImage img {
-    max-width: 100%;
+    width: 35vw;
     height: auto;
 }
+    
 
 
 .result-container {
     text-align: center;
+    margin : 10vh;
 }
 #presenter-image img,  #productImage img {
     max-width: 100%;
     height: auto;
+}
+
+.container {
+	height: 100%;
+}
+
+
+html, body, .container {
+    height: 100%;
+}
+
+.container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.btn {
+    display: inline-block;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    border: 0;
+    outline: 0;
+    padding: 0;
+    transition: all 200ms ease-in;
+    cursor: pointer;
+    border-radius: 100px;
+}
+.btn--primary {
+    background: #fe7c2a;
+    color: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
+    border-radius: 5px;
+    padding: 12px 36px;
+}
+.btn--primary:hover {
+    background: #481c02;
+}
+.btn--primary:active {
+    background: #fe7c2a;
+    box-shadow: inset 0 0 10px 2px rgba(0, 0, 0, .2);
+}
+.btn--inside {
+    margin-left: -96px;
+}
+.form__field {
+    width: 360px;
+    background: #fff;
+    color: #a3a3a3;
+    font: inherit;
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
+    border: 0;
+    outline: 0;
+    padding: 22px 18px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+
+/*timer--------------------------------*/
+
+
+
+.label {
+    font-size: 90px;
+    font-weight: 900;
+    text-anchor: middle;
+    fill: rgb(34, 213, 201);
+    transform: translate(0, 25px);
+}
+
+/*instruction--------------------------------*/
+
+p.instruction{
+
+    font-size: 20px;
+    padding: 10px;
+
 }
