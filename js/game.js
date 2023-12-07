@@ -26,6 +26,11 @@ class Game {
 
         // Afficher l'écran de jeu
         this.gameScreen.style.display = 'block';
+        const form = document.querySelector('.form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Annuler le comportement par défaut du formulaire
+            this.checkAndSubmitGuess();
+        });
     }
 
     replayGame() {
@@ -65,7 +70,12 @@ class Game {
         // Récupérer la valeur entrée par l'utilisateur
         const priceInput = document.getElementById('priceInput');
         const userGuess = parseInt(priceInput.value);
-    
+        if (isNaN(userGuess)) {
+            // Afficher un message d'erreur
+            alert('Veuillez entrer un nombre valide.');
+            return; // Arrêter la fonction si la saisie n'est pas un nombre
+        }
+
         // Comparer la valeur à la réponse correcte
         const correctPrice = this.currentProduct.price;
     
@@ -90,7 +100,7 @@ class Game {
         const instructionContainer = document.getElementById('result-container');
        
          // Ajouter le nombre d'instruction à afficher
-        while (instructionContainer.children.length >= 6) {
+        while (instructionContainer.children.length >= 4) {
             instructionContainer.removeChild(instructionContainer.firstChild);
         }
         const instruction = document.createElement('p');

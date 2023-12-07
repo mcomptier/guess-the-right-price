@@ -70,6 +70,7 @@ table {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 150vh;
 }
 h1, p, .buttons-container {
     color: white; /* Ajustez la couleur du texte pour une meilleure lisibilité sur l'image de fond */
@@ -184,8 +185,9 @@ header button {
     margin : 10vh;
 }
 #presenter-image img,  #productImage img {
-    max-width: 100%;
-    height: auto;
+    width: 55%;
+    aspect-ratio: 3/2;
+    object-fit:  contain;
 }
 
 .container {
@@ -279,5 +281,8 @@ p.instruction{
     width: 150vh;
 }
 #rewardsList img {
-    width: 50px; /* Remplacez 50px par la largeur souhaitée */
-    height: auto; }
+    height: auto; 
+    width: 15%;
+    aspect-ratio: 3/2;
+    object-fit:  contain;
+}
