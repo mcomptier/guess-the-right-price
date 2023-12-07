@@ -30,10 +30,14 @@ class Game {
 
     replayGame() {
         // Réinitialiser les propriétés du jeu pour une nouvelle partie
+        console.log('Replaying game...');
         this.trials = 1;
-        this.guessedProducts = [];
         this.timePassed = 0;
-
+        
+        if (this.guessedProducts.length === products.length) {
+            this.endGame("Congrats ! You guess all products.");
+            return;
+        }
         // Redémarrer le jeu avec un nouveau produit
         this.currentProduct = getRandomProduct();
         this.displayProduct(this.currentProduct);
@@ -53,6 +57,9 @@ class Game {
 
         productImage.alt = product.name;
     }
+    static getGuessedProducts() {
+        return this.guessedProducts || [];
+    }
 
     checkAndSubmitGuess() {
         // Récupérer la valeur entrée par l'utilisateur
@@ -71,23 +78,13 @@ class Game {
             this.displayGuessResult(userGuess, 'correct', 'green');
             this.updateRewardsList()
             this.replayGame()
+            const correctSound = new Audio('../guess-the-right-price/sounds/bipbip.wav');
+            correctSound.play();
         }
         this.updateRewardsList(); 
 
     }
-    updateRewardsList() {
-        const rewardsList = document.getElementById('rewardsList');
-
-        // Effacer la liste actuelle
-        rewardsList.innerHTML = '';
-
-        // Ajouter les produits correctement devinés à la liste
-        this.guessedProducts.forEach(product => {
-            const listItem = document.createElement('li');
-            listItem.textContent = product.name;
-            rewardsList.appendChild(listItem);
-        });
-    }
+    
 
     displayGuessResult(userGuess, className, backgroundColor) {
         const instructionContainer = document.getElementById('result-container');
@@ -154,6 +151,24 @@ class Game {
             this.endGame();
         }
     }
+    updateRewardsList() {
+        const rewardsList = document.getElementById('rewardsList');
+
+        // Effacer la liste actuelle
+        rewardsList.innerHTML = '';
+
+        // Ajouter les produits correctement devinés à la liste
+        this.guessedProducts.forEach(product => {
+            console.log(product);
+            const listItem = document.createElement('li');
+            const productImage = document.createElement('img');
+            productImage.src = `../guess-the-right-price/img/${product.img}`;
+            productImage.alt = product.name;
+            listItem.appendChild(productImage);
+            listItem.appendChild(document.createTextNode(product.name));
+            rewardsList.appendChild(listItem);
+        });
+    }
 
     endGame() {
         // Logique de fin de jeu, par exemple, afficher les résultats
@@ -162,7 +177,12 @@ class Game {
 
         // Arrêtez le minuteur
         clearInterval(this.timerInterval);
+        const EndSound = new Audio('../guess-the-right-price/sounds/Applause.wav');
+        EndSound.play();
     }
+
+
+    
 }
 
 window.Game = Game;

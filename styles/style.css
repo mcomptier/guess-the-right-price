@@ -268,3 +268,16 @@ p.instruction{
     padding: 10px;
 
 }
+/*game)result--------------------------------*/
+
+
+#game-results {
+    background-image: url('../img/night.png');
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    width: 150vh;
+}
+#rewardsList img {
+    width: 50px; /* Remplacez 50px par la largeur souhaitée */
+    height: auto; }
