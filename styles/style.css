@@ -282,7 +282,45 @@ p.instruction{
 }
 #rewardsList img {
     height: auto; 
-    width: 15%;
+    width: 35%;
     aspect-ratio: 3/2;
     object-fit:  contain;
 }
+#rewardsList li  {
+	display: inline-block;
+	width: 90%;
+	max-width: 20rem;
+	margin: 1rem;
+	font-size: 2rem;
+	text-decoration: none;
+	overflow: hidden;
+	box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
+	transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+    color: white;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 0.5rem;
+   
+}
+
+#rewardsList li :hover {
+	transform: translateY(-0.5rem) scale(1.0125);
+	box-shadow: 0 0.5em 3rem -1rem rgba(0,0,0,0.5);
+}
+
+
+#rewardsList li img {
+	display: inline-block;
+	width: 65%;
+    margin: 40px;
+	box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.5);
+	transition: transform 0.1s ease-in-out, box-shadow 0.1s;
+    color: white;
+    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 0.5rem;
+   
+}
+
+    
+
